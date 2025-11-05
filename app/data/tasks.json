@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Design homepage layout",
+        "description": "Create the basic wireframe for the homepage using Figma.",
+        "status": "To Do"
+    },
+    {
+        "id": 2,
+        "title": "Develop login feature",
+        "description": "Implement user authentication with Flask and sessions.",
+        "status": "Doing"
+    },
+    {
+        "id": 3,
+        "title": "Test API endpoints",
+        "description": "Ensure all routes return correct JSON responses.",
+        "status": "Done"
+    },
+    {
+        "id": 4,
+        "title": "Write project documentation",
+        "description": "Prepare the README file and include installation steps.",
+        "status": "To Do"
+    }
+]

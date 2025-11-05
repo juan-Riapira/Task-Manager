@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Board</title>
+
+    <!-- Bootstrap and styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/board.css') }}">
+</head>
+
+<body class="py-5">
+    <div class="container">
+        <h1><i class="bi bi-kanban-fill text-primary me-2"></i>Task Board</h1>
+
+        <div class="board">
+            {% for status, group in tasks_grouped.items() %}
+            <div class="column" ondrop="drop(event, '{{ status }}')" ondragover="allowDrop(event)">
+                <h4>
+                    {% if status == 'To Do' %}
+                        🕒 To do
+                    {% elif status == 'Doing' %}
+                        🔧 Doing
+                    {% elif status == 'Done' %}
+                        ✅ Done
+                    {% else %}
+                        📋 {{ status }}
+                    {% endif %}
+                </h4>
+                {% for task in group %}
+                <div class="task" draggable="true" ondragstart="drag(event)" data-id="{{ task['id'] }}">
+                    <strong>{{ task['title'] }}</strong><br>
+                    <small>{{ task.get('description', '') }}</small>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/tasks" class="btn btn-secondary btn-back">
+            <i class="bi bi-arrow-left-circle me-1"></i> Back to Tasks
+        </a>
+    </div>
+
+    <!-- Script externo -->
+    <!-- External script -->
+    <script src="{{ url_for('static', filename='js/board.js') }}"></script>
+</body>
+</html>
